@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'bootsnap', '>= 1.4.4', require: false
 gem 'pg'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
