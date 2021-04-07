@@ -5,7 +5,7 @@ ActiveAdmin.register Doctor do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :email, :password, :full_name, :phone_number, :password_confirmation
+  permit_params :email, :password, :full_name, :phone_number, :password_confirmation, :category_id
   #
   # or
   #
@@ -20,7 +20,7 @@ ActiveAdmin.register Doctor do
     column :full_name
     column :email
     column :phone_number
-    column :password
+    column :category
     actions
   end
 
@@ -31,6 +31,7 @@ ActiveAdmin.register Doctor do
       f.input :phone_number
       f.input :password
       f.input :password_confirmation
+      f.input :category_id, :label => 'Category', :as => :select, :collection => Category.all.map{|u| [u.name, u.id]},include_blank: false
       f.submit
     end
   end

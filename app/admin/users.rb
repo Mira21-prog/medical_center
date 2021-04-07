@@ -20,10 +20,9 @@ ActiveAdmin.register User do
     column :full_name
     column :email
     column :phone_number
-    column :password
     actions
   end
-  
+
   form do |f|
     f.inputs "Create doctor" do
       f.input :full_name
