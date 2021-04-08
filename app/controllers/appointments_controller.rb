@@ -14,14 +14,11 @@ class AppointmentsController < ApplicationController
   end
 
   def create
-    binding.pry
     @appointment = Appointment.new(permit_params)
-    binding.pry
     if @appointment.save
       redirect_to doctors_path
       flash[:success] = "Appointment was been created success"
     else
-      binding.pry
       render 'new'
     end
   end

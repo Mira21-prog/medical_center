@@ -1,0 +1,15 @@
+<div class="container">
+  <div class="card">
+  <div class="card-header">
+    Recommendetion
+  </div>
+  <div class="card-body">
+    <%= form_with model: @recommendation, method: :post do |form|%>
+      <%= form.label :leave_a_recommendation%>
+      <%= form.text_area :comment, class: 'form-control', require: true%><br>
+      <%= form.hidden_field :appointment_id %><br>
+      <%= form.submit %>
+    <% end %>
+  </div>
+</div>
+</div>

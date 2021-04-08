@@ -11,6 +11,9 @@
       <% else %>
         <p>Patient: <%= app.patient.full_name%></p>
       <% end %>
+      <% if can? :create, Recommendation%>
+        <%= link_to "Add Recommendation", new_recommendation_path(appointment_id: app.id), class: "btn btn-info" %>
+      <% end %>
     </div>
     <br>
   <% end %>
