@@ -10,4 +10,12 @@ class User < ApplicationRecord
   def email_required?
     false
   end
+  
+  def doctor?
+    type == 'Doctor'
+  end
+
+  def patient?
+    type == 'Patient'
+  end
 end
