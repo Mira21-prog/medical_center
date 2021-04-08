@@ -6,12 +6,12 @@ class Ability
   def initialize(user)
     if user.patient?
       can :read, Doctor
-      can [:read, :create], Appointment, user_id: user.id
+      can [:read, :create], Appointment, patient_id: user.id
       can [:read], Recommendation, user_id: user.id
     end
     if user.doctor?
-      can [:read], Appointment, user_id: user.id
-      can [:create], Recommendation, user_id: user.id
+      can [:read], Appointment, doctor_id: user.id
+      can [:create], Recommendation, doctor_id: user.id
     end
     # Define abilities for the passed in user here. For example:
     #

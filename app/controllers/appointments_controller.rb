@@ -1,8 +1,10 @@
 class AppointmentsController < ApplicationController
-  before_action :find_user
-
   def index
-    @appointment = Appointment.all
+    if current_user.patient?
+      @appointments = current_user.appointments.all
+    else
+      @appointments = current_user.appointments.open
+    end
   end
 
   def show
@@ -16,6 +18,7 @@ class AppointmentsController < ApplicationController
   def create
     @appointment = Appointment.new(permit_params)
     if @appointment.save
+      @appointment.open!
       redirect_to doctors_path
       flash[:success] = "Appointment was been created success"
     else
@@ -25,12 +28,7 @@ class AppointmentsController < ApplicationController
 
   private
 
-  def find_user
-    @user = current_user
-  end
-
   def permit_params
     params.require(:appointment).permit(:comment, :appointment_date, :doctor_id).merge(patient_id: @user.id)
   end
-
 end

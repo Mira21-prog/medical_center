@@ -1,7 +1,8 @@
 <div class="container">
   <div class="row">
    <div class="col-md-6 offset-md-3">
-  <% @appointment.each do |app| %>
+  <% @appointments.each do |app| %>
+  <% if can? :read, Appointment %>
     <div class="card text-center doctor-list">
       <p class="text-success text-uppercase font-weight-bold"><%= %></p>
       <p>Date: <%= app.appointment_date.strftime("%Y-%m-%d %H:%M")%></p>
@@ -14,8 +15,15 @@
       <% if can? :create, Recommendation%>
         <%= link_to "Add Recommendation", new_recommendation_path(appointment_id: app.id), class: "btn btn-info" %>
       <% end %>
+      <% if app.recommendation.present? %>
+        <% if can? :read, Recommendation%>
+          <%= link_to "Show Recommendation", recommendation_path(app.recommendation.id), class: "btn btn-info" %>
+        <% end %>
+      <% end %>
+
     </div>
     <br>
+    <% end %>
   <% end %>
 </div>
 <div>

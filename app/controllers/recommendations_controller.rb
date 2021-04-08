@@ -1,4 +1,8 @@
 class RecommendationsController < ApplicationController
+  def show
+    @recommendation = Recommendation.find(params[:id])
+  end
+
   def new
     appointment = Appointment.find(params[:appointment_id])
     @recommendation = appointment.build_recommendation
@@ -7,8 +11,8 @@ class RecommendationsController < ApplicationController
   def create
     @appointment = Appointment.find(params[:recommendation][:appointment_id])
     @recomendation = Recommendation.new(permit_params)
-    binding.pry
     if @recomendation.save
+      @appointment.close!
       redirect_to appointments_path
       flash[:success] = "Recommendation was been created success"
     else
