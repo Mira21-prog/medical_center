@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+   <div class="col-md-6 offset-md-3">
+  <% @appointment.each do |app| %>
+    <div class="card text-center doctor-list">
+      <p class="text-success text-uppercase font-weight-bold"><%= %></p>
+      <p>Date: <%= app.appointment_date.strftime("%Y-%m-%d %H:%M")%></p>
+      <p>Comment: <%= app.comment%></p>
+      <% if current_user.patient? %>
+        <p>Doctor: <%= app.doctor.full_name%></p>
+      <% else %>
+        <p>Patient: <%= app.patient.full_name%></p>
+      <% end %>
+    </div>
+    <br>
+  <% end %>
+</div>
+<div>
+</div>

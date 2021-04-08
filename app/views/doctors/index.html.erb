@@ -6,7 +6,9 @@
     <div class="card text-center doctor-list">
       <p class="text-success text-uppercase font-weight-bold"><%= doctor.full_name %></p>
       <p><%= doctor&.category&.name%></p>
-      <%= link_to "Request an Appointment", '', class: "btn btn-info" %>
+      <% if can? :create, Appointment %>
+        <%= link_to "Request an Appointment", new_appointment_path(doctor_id: doctor.id), class: "btn btn-info" %>
+      <% end %>
     </div>
     <br>
   <% end %>

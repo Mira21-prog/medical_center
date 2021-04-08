@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="card">
+  <div class="card-header">
+    Appointment
+  </div>
+  <div class="card-body">
+    <%= form_with model: @appointment do |form|%>
+      <%= form.label :appointment_date%>
+      <%= form.datetime_field :appointment_date, class: 'form-control'%><br>
+      <%= form.label :comment%>
+      <%= form.text_area :comment, class: 'form-control'%><br>
+      <%= form.hidden_field :doctor_id %><br>
+      <%= form.submit %>
+    <% end %>
+  </div>
+</div>
+</div>
