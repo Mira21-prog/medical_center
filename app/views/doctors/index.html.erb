@@ -1,0 +1,15 @@
+
+<div class="container">
+  <div class="row">
+   <div class="col-md-6 offset-md-3">
+  <% @doctors.each do |doctor| %>
+    <div class="card text-center doctor-list">
+      <p class="text-success text-uppercase font-weight-bold"><%= doctor.full_name %></p>
+      <p><%= doctor&.category&.name%></p>
+      <%= link_to "Request an Appointment", '', class: "btn btn-info" %>
+    </div>
+    <br>
+  <% end %>
+</div>
+<div>
+</div>
