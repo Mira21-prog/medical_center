@@ -2,12 +2,18 @@
 <div class="container">
   <div class="row">
    <div class="col-md-6 offset-md-3">
+       <%= form_tag(doctors_path, method: :get) do |form| %>
+         <%= select_tag :filter, options_for_select([["Filter by all categories"]]+Category.all.map {|category| [category.name, category.id]} ),class: 'form-control selector'%>
+        <% end %>
+        <br>
   <% @doctors.each do |doctor| %>
     <div class="card text-center doctor-list">
       <p class="text-success text-uppercase font-weight-bold"><%= doctor.full_name %></p>
       <p><%= doctor&.category&.name%></p>
       <% if can? :create, Appointment %>
-        <%= link_to "Request an Appointment", new_appointment_path(doctor_id: doctor.id), class: "btn btn-info" %>
+        <% if doctor.appointments.where(status: "open").count <= 10 %>
+          <%= link_to "Request an Appointment", new_appointment_path(doctor_id: doctor.id), class: "btn btn-info" %>
+        <% end %>
       <% end %>
     </div>
     <br>
@@ -15,3 +21,10 @@
 </div>
 <div>
 </div>
+<script>
+ $(document).ready(function(){
+ $('.selector').change(function(){
+   this.form.submit()
+ });
+});
+</script>

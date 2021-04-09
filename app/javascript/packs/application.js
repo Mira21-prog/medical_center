@@ -11,14 +11,6 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+require("jquery")
 require("bootstrap")
 import "../stylesheets/application";
-document.addEventListener("turbolinks:load", function() {
-    $(function () {
-        $('[data-toggle="tooltip"]').tooltip()
-        $('[data-toggle="popover"]').popover()
-    })
-})
-$(document).ready(function(){
-    $('.phone_number').inputmask('(999)-999-9999');
-});

@@ -29,6 +29,6 @@ class AppointmentsController < ApplicationController
   private
 
   def permit_params
-    params.require(:appointment).permit(:comment, :appointment_date, :doctor_id).merge(patient_id: @user.id)
+    params.require(:appointment).permit(:comment, :appointment_date, :doctor_id).merge(patient_id: current_user.id)
   end
 end
