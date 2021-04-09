@@ -1,6 +1,6 @@
 
 <div class="container">
-  <div class="row">
+  <div class="row text-center">
    <div class="col-md-6 offset-md-3">
        <%= form_tag(doctors_path, method: :get) do |form| %>
          <%= select_tag :filter, options_for_select([["Filter by all categories"]]+Category.all.map {|category| [category.name, category.id]} ),class: 'form-control selector'%>
@@ -8,6 +8,11 @@
         <br>
   <% @doctors.each do |doctor| %>
     <div class="card text-center doctor-list">
+      <div class="text-center">
+        <% if doctor.attachment.attached? %>
+          <%= image_tag(doctor.attachment, width: "20%", height: "20%", class: 'rounded-circle') %>
+        <% end %>
+      </div>
       <p class="text-success text-uppercase font-weight-bold"><%= doctor.full_name %></p>
       <p><%= doctor&.category&.name%></p>
       <% if can? :create, Appointment %>

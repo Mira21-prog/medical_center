@@ -22,7 +22,7 @@ class AppointmentsController < ApplicationController
       redirect_to doctors_path
       flash[:success] = "Appointment was been created success"
     else
-      render 'new'
+      render :new
     end
   end
 

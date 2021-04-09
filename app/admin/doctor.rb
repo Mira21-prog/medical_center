@@ -5,7 +5,7 @@ ActiveAdmin.register Doctor do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :email, :password, :full_name, :phone_number, :password_confirmation, :category_id
+  permit_params :email, :password, :full_name, :phone_number, :password_confirmation, :category_id, :attachment
   #
   # or
   #
@@ -21,6 +21,9 @@ ActiveAdmin.register Doctor do
     column :email
     column :phone_number
     column :category
+    # column :attachment do |ad|
+    #     image_tag url_for(ad.attachment)
+    #   end
     actions
   end
 
@@ -31,6 +34,7 @@ ActiveAdmin.register Doctor do
       f.input :phone_number
       f.input :password
       f.input :password_confirmation
+      f.input :attachment, as: :file
       f.input :category_id, :label => 'Category', :as => :select, :collection => Category.all.map{|u| [u.name, u.id]},include_blank: false
       f.submit
     end

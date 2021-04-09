@@ -15,6 +15,7 @@ gem 'devise'
 gem 'activeadmin'
 gem 'cancancan'
 gem 'pry'
+gem 'cloudinary', '~> 1.18.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

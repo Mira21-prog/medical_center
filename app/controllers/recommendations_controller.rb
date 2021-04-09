@@ -10,8 +10,8 @@ class RecommendationsController < ApplicationController
 
   def create
     @appointment = Appointment.find(params[:recommendation][:appointment_id])
-    @recomendation = Recommendation.new(permit_params)
-    if @recomendation.save
+    @recommendation = @appointment.build_recommendation(permit_params)
+    if @recommendation.save
       @appointment.close!
       redirect_to appointments_path
       flash[:success] = "Recommendation was been created success"
@@ -22,6 +22,6 @@ class RecommendationsController < ApplicationController
   private
 
   def permit_params
-    params.require(:recommendation).permit(:comment).merge(appointment: @appointment )
+    params.require(:recommendation).permit(:comment)
   end
 end

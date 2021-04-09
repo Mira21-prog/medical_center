@@ -4,11 +4,11 @@
     Recommendetion
   </div>
   <div class="card-body">
-    <%= form_with model: @recommendation, method: :post do |form|%>
-      <%= form.label :leave_a_recommendation%>
+    <%= form_for @recommendation do |form|%>
+      <%= form.label :leave_a_recommendation  %>
       <%= form.text_area :comment, class: 'form-control', require: true %><br>
       <%= form.hidden_field :appointment_id %><br>
-      <%= form.submit %>
+      <%= form.submit 'Create recommendation' %>
     <% end %>
   </div>
 </div>
