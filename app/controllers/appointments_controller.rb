@@ -7,9 +7,6 @@ class AppointmentsController < ApplicationController
     end
   end
 
-  def show
-  end
-
   def new
     doctor = Doctor.find(params[:doctor_id])
     @appointment = doctor.appointments.build
@@ -20,7 +17,7 @@ class AppointmentsController < ApplicationController
     if @appointment.save
       @appointment.open!
       redirect_to doctors_path
-      flash[:success] = "Appointment was been created success"
+      flash[:success] = "Appointment has been created success"
     else
       render :new
     end

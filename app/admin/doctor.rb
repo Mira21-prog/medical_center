@@ -21,9 +21,6 @@ ActiveAdmin.register Doctor do
     column :email
     column :phone_number
     column :category
-    # column :attachment do |ad|
-    #     image_tag url_for(ad.attachment)
-    #   end
     actions
   end
 
@@ -32,6 +29,7 @@ ActiveAdmin.register Doctor do
       f.input :full_name
       f.input :email
       f.input :phone_number
+      end
       f.input :password
       f.input :password_confirmation
       f.input :attachment, as: :file

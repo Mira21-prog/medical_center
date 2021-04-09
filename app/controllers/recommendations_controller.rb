@@ -14,7 +14,7 @@ class RecommendationsController < ApplicationController
     if @recommendation.save
       @appointment.close!
       redirect_to appointments_path
-      flash[:success] = "Recommendation was been created success"
+      flash[:success] = "Recommendation has been created success"
     else
       render 'new'
     end
