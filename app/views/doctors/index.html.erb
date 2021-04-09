@@ -16,7 +16,7 @@
       <p class="text-success text-uppercase font-weight-bold"><%= doctor.full_name %></p>
       <p><%= doctor&.category&.name%></p>
       <% if can? :create, Appointment %>
-        <% if doctor.appointments.where(status: "open").count <= 10 %>
+        <% if doctor.appointments.where(status: "open").count <= 9 %>
           <%= link_to "Request an Appointment", new_appointment_path(doctor_id: doctor.id), class: "btn btn-info" %>
         <% end %>
       <% end %>
