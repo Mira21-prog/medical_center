@@ -5,7 +5,7 @@ ActiveAdmin.register Recommendation do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  # permit_params :comment, :appointment_id
+  permit_params :comment, :appointment_id
   #
   # or
   #
@@ -14,5 +14,5 @@ ActiveAdmin.register Recommendation do
   #   permitted << :other if params[:action] == 'create' && current_user.admin?
   #   permitted
   # end
-  
+
 end
