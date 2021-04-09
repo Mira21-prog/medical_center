@@ -29,7 +29,6 @@ ActiveAdmin.register Doctor do
       f.input :full_name
       f.input :email
       f.input :phone_number
-      end
       f.input :password
       f.input :password_confirmation
       f.input :attachment, as: :file
